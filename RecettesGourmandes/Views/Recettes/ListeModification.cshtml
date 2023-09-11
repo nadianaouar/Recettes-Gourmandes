@@ -1,0 +1,31 @@
+﻿@model IEnumerable<RecettesGourmandes.Models.Recette>
+
+@{
+    ViewBag.Title = "ListeModification";
+}
+
+<h2>Veuillez choisir la recette à modifier</h2>
+
+<table class="table table-hover">
+    <tr class="table-secondary">
+        <th>@Html.DisplayNameFor(model => model.NomRecette)</th>
+        <th></th>
+        <th>@Html.DisplayNameFor(model => model.Description)</th>
+        <th></th>
+    </tr>
+
+    @foreach (var recette in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => recette.NomRecette)</td>
+            <td>
+                @if (recette.RecetteImage != null)
+                {
+                    <img width="200" src="@Url.Action("GetImage", new { id = recette.Id })" />
+                }
+            </td>
+            <td>@Html.DisplayFor(model => recette.Description)</td>
+            <td>@Html.ActionLink("Modifier la Recette", "Modifier", new { id = recette.Id })</td>
+        </tr>
+    }
+</table>

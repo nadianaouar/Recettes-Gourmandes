@@ -1,0 +1,35 @@
+﻿@model RecettesGourmandes.Models.Recette
+
+@{
+    ViewBag.Title = "Modifier";
+}
+
+<h2>Modifier la recette</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    <form>
+        <fieldset>
+            <div class="form-group">
+                <label class="form-label mt-4">Id de la Recette:</label>
+                @Html.EditorFor(model => model.Id)
+            </div>
+
+            <div class="form-group">
+                <label class="form-label mt-4">Nom de la Recette:</label>
+                @Html.EditorFor(model => model.NomRecette)
+                @Html.ValidationMessageFor(model => model.NomRecette)
+            </div>
+
+            <div class="form-group">
+                <label class="form-label mt-4">Description de la Recette: </label>
+                @Html.EditorFor(model => model.Description)
+            </div>
+            <div class="form-group">
+                <button value="Modifier" type="submit" class="btn btn-primary">Modifier</button>
+                <button type="Reset" onclick="location.href='@Url.Action("ListeRecettes","Recettes")'" class="btn btn-primary">Cancel</button>
+            </div>
+        </fieldset>
+    </form>
+}
+

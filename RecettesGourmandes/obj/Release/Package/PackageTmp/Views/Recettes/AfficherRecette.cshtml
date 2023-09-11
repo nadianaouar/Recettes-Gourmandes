@@ -1,0 +1,21 @@
+﻿@model RecettesGourmandes.Models.Recette
+
+@{
+    ViewBag.Title = "AfficherRecette";
+}
+
+<h2>Afficher les détails du Recette</h2>
+<div class="card border-primary mb-3" style="max-width: 20rem;">
+    <div class="card-header">@Html.DisplayFor(model => model.NomRecette)</div>
+    <div class="card-body">
+        <h4 class="card-title">@Html.DisplayNameFor(model => Model.Description)</h4>
+        <p class="card-text">@Html.DisplayFor(model => Model.Description)</p>
+        <p>
+            @if (Model.RecetteImage != null)
+            {
+                <img width="200" src="@Url.Action("GetImage", new { id = Model.Id })" />
+            }
+            </p>
+    </div>
+</div>
+

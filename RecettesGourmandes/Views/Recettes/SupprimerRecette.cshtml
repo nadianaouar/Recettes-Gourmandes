@@ -1,0 +1,30 @@
+﻿@model RecettesGourmandes.Models.Recette
+
+@{
+    ViewBag.Title = "Supprimer";
+}
+
+<h2>Vous allez supprimer la recette</h2>
+@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken();
+        <div class="card border-primary mb-3" style="max-width: 20rem;">
+            <div class="card-header">@Html.DisplayFor(model => model.NomRecette)</div>
+            <div class="card-body">
+                <h4 class="card-title">@Html.DisplayNameFor(model => Model.Description)</h4>
+                <p class="card-text">@Html.DisplayFor(model => Model.Description)</p>
+                <p>
+                    @if (Model.RecetteImage != null)
+                    {
+                        <img width="200" src="@Url.Action("GetImage", new { id = Model.Id })" />
+                    }
+                </p>
+            </div>
+        </div>
+            <div class="form-group">
+                <button value="Supprimer" type="submit" class="btn btn-primary">Supprimer</button>
+                <button type="Reset" onclick="location.href='@Url.Action("ListeSuppression","Recettes")'" class="btn btn-primary">Cancel</button>
+            </div>
+        }
+
+
